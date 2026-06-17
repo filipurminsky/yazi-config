@@ -2,6 +2,20 @@
 
 require("starship"):setup()
 require("simple-status"):setup()
+require("zoxide"):setup({
+	update_db = true,
+})
+
+-- git.yazi: show git status as linemode in the file list
+require("git"):setup {
+	order = 1500,
+}
+
+-- copy-file-contents.yazi: copy file contents (not path) to clipboard
+require("copy-file-contents"):setup {
+	append_char = "\n",
+	notification = true,
+}
 --require("yatline-created-time"):setup()
 
 function Linemode:size_and_mtime()
@@ -28,6 +42,39 @@ require("full-border"):setup {
 
 require("smart-enter"):setup {
 	open_multi = true,
+}
+
+-- yamb: bookmark manager -- https://github.com/h-hg/yamb
+local bookmarks = {}
+local path_sep = package.config:sub(1, 1)
+local home_path = os.getenv("HOME")
+table.insert(bookmarks, {
+	tag = "Config",
+	path = home_path .. path_sep .. ".config" .. path_sep,
+	key = "c",
+})
+table.insert(bookmarks, {
+	tag = "Downloads",
+	path = home_path .. path_sep .. "Downloads" .. path_sep,
+	key = "d",
+})
+table.insert(bookmarks, {
+	tag = "Home",
+	path = home_path .. path_sep,
+	key = "h",
+})
+table.insert(bookmarks, {
+	tag = "Git",
+	path = home_path .. path_sep .. "git" .. path_sep,
+	key = "g",
+})
+
+require("yamb"):setup {
+	bookmarks = bookmarks,
+	jump_notify = true,
+	cli = "fzf",
+	keys = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+	path = home_path .. "/.config/yazi/bookmark",
 }
 
 

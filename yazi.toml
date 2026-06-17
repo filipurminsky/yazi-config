@@ -5,12 +5,23 @@ linemode = "size_and_mtime"
 show_hidden = false
 
 [plugin]
+  # git.yazi: fetch git status for files and directories
+  prepend_fetchers = [
+    { url = "*",  run = "git", group = "git" },
+    { url = "*/", run = "git", group = "git" },
+  ]
   prepend_preloaders = [
     # Replace magick, image, video with mediainfo
     { mime = "{audio,video,image}/*", run = "mediainfo" },
     { mime = "application/subrip", run = "mediainfo" },
     # Adobe Illustrator, Adobe Photoshop is image/adobe.photoshop, already handled above
     { mime = "application/postscript", run = "mediainfo" },
+    # Office documents (office.yazi)
+    { mime = "application/openxmlformats-officedocument.*", run = "office" },
+    { mime = "application/oasis.opendocument.*", run = "office" },
+    { mime = "application/ms-*", run = "office" },
+    { mime = "application/msword", run = "office" },
+    { url = "*.docx", run = "office" },
   ]
   prepend_previewers = [
     # Replace magick, image, video with mediainfo
@@ -18,6 +29,12 @@ show_hidden = false
     { mime = "application/subrip", run = "mediainfo" },
     # Adobe Illustrator, Adobe Photoshop is image/adobe.photoshop, already handled above
     { mime = "application/postscript", run = "mediainfo" },
+    # Office documents (office.yazi)
+    { mime = "application/openxmlformats-officedocument.*", run = "office" },
+    { mime = "application/oasis.opendocument.*", run = "office" },
+    { mime = "application/ms-*", run = "office" },
+    { mime = "application/msword", run = "office" },
+    { url = "*.docx", run = "office" },
   ]
   # There are more extensions which are supported by mediainfo.
   # Just add file's MIME type to `previewers`, `preloaders` above.

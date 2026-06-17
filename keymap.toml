@@ -27,3 +27,93 @@ prepend_keymap = [
 on   = "T"
 run  = "plugin max-preview"
 desc = "Maximize or restore preview"
+
+[[mgr.prepend_keymap]]
+on   = "z"
+run  = "plugin zoxide"
+desc = "Jump to a directory via zoxide"
+
+[[mgr.prepend_keymap]]
+on   = "Z"
+run  = "plugin fzf"
+desc = "Jump to a file/directory via fzf"
+
+# yamb: bookmark manager
+[[mgr.prepend_keymap]]
+on   = ["u", "a"]
+run  = "plugin yamb -- save"
+desc = "Add bookmark"
+
+[[mgr.prepend_keymap]]
+on   = ["u", "g"]
+run  = "plugin yamb -- jump_by_key"
+desc = "Jump bookmark by key"
+
+[[mgr.prepend_keymap]]
+on   = ["u", "G"]
+run  = "plugin yamb -- jump_by_fzf"
+desc = "Jump bookmark by fzf"
+
+[[mgr.prepend_keymap]]
+on   = ["u", "d"]
+run  = "plugin yamb -- delete_by_key"
+desc = "Delete bookmark by key"
+
+[[mgr.prepend_keymap]]
+on   = ["u", "D"]
+run  = "plugin yamb -- delete_by_fzf"
+desc = "Delete bookmark by fzf"
+
+[[mgr.prepend_keymap]]
+on   = ["u", "A"]
+run  = "plugin yamb -- delete_all"
+desc = "Delete all bookmarks"
+
+[[mgr.prepend_keymap]]
+on   = ["u", "r"]
+run  = "plugin yamb -- rename_by_key"
+desc = "Rename bookmark by key"
+
+[[mgr.prepend_keymap]]
+on   = ["u", "R"]
+run  = "plugin yamb -- rename_by_fzf"
+desc = "Rename bookmark by fzf"
+
+# chmod.yazi: change permissions on selected/hovered files
+[[mgr.prepend_keymap]]
+on   = ["c", "m"]
+run  = "plugin chmod"
+desc = "Chmod on selected files"
+
+# compress.yazi: create an archive from selected/hovered files
+[[mgr.prepend_keymap]]
+on   = ["c", "a", "a"]
+run  = "plugin compress"
+desc = "Archive selected files"
+
+[[mgr.prepend_keymap]]
+on   = ["c", "a", "p"]
+run  = "plugin compress -p"
+desc = "Archive selected files (password)"
+
+[[mgr.prepend_keymap]]
+on   = ["c", "a", "h"]
+run  = "plugin compress -ph"
+desc = "Archive selected files (password + header encryption)"
+
+[[mgr.prepend_keymap]]
+on   = ["c", "a", "l"]
+run  = "plugin compress -l"
+desc = "Archive selected files (compression level)"
+
+# diff.yazi: diff hovered file against the yanked (selected) file
+[[mgr.prepend_keymap]]
+on   = "<C-d>"
+run  = "plugin diff"
+desc = "Diff the selected with the hovered file"
+
+# copy-file-contents.yazi: copy file contents (not path) to clipboard
+[[mgr.prepend_keymap]]
+on   = "<A-y>"
+run  = "plugin copy-file-contents"
+desc = "Copy contents of selected files to clipboard"
