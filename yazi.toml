@@ -63,13 +63,14 @@ edit = [
 ]
 
 play = [
-  { run = 'mpv "$@"', orphan = true, for = "unix"},
+  { run = 'open -a VLC "$@"', orphan = true, for = "macos" },
 ]
 
 [open]
 rules = [
 	{ mime = "text/*", use = "edit" },
 	{ mime = "video/*", use = "play" },
+	{ mime = "audio/*", use = "play" },
 
 	# { mime = "application/json", use = "edit" },
 	{ url = "*.json", use = "edit" },
