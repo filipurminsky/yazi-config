@@ -117,3 +117,8 @@ desc = "Diff the selected with the hovered file"
 on   = "<A-y>"
 run  = "plugin copy-file-contents"
 desc = "Copy contents of selected files to clipboard"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "r" ]
+run  = 'shell --orphan -- root="$(git rev-parse --show-toplevel 2>/dev/null)" && ya emit cd "$root"'
+desc = "Go to the repository root"

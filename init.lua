@@ -68,6 +68,11 @@ table.insert(bookmarks, {
 	path = home_path .. path_sep .. "git" .. path_sep,
 	key = "g",
 })
+table.insert(bookmarks, {
+	tag = "Desktop",
+	path = home_path .. path_sep .. "Desktop" .. path_sep,
+	key = "D",
+})
 
 require("yamb"):setup {
 	bookmarks = bookmarks,

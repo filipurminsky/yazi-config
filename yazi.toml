@@ -66,15 +66,45 @@ play = [
   { run = 'open -a VLC "$@"', orphan = true, for = "macos" },
 ]
 
+# zathura-open detaches and focuses the window; orphan keeps it alive when yazi
+# exits. See ~/.local/bin/zathura-open for why it isn't plain `open -a`.
+document = [
+  { run = 'zathura-open "$@"', orphan = true, for = "macos" },
+]
+
+image = [
+  { run = 'open -a Preview "$@"', orphan = true, for = "macos" },
+]
+
+# Hand off to the system default app. Replaces the `open` opener that the
+# default config provides, which defining [opener] here overrides away.
+open = [
+  { run = 'open "$@"', desc = "Open", orphan = true, for = "macos" },
+]
+
 [open]
 rules = [
+	# Multiple openers for a single rule. Must stay above the text/* rule
+	# below, which would otherwise swallow text/html.
+	{ url = "*.html", use = [ "open", "edit" ] },
+
 	{ mime = "text/*", use = "edit" },
 	{ mime = "video/*", use = "play" },
 	{ mime = "audio/*", use = "play" },
 
+	# zathura handles PDF, PostScript, DjVu and comic-book archives
+	{ mime = "application/pdf", use = "document" },
+	{ mime = "application/postscript", use = "document" },
+	{ mime = "image/vnd.djvu", use = "document" },
+	{ url = "*.{djvu,djv,cbr,cbz,cbt,cba,cb7}", use = "document" },
+
+	# Must stay below the djvu rules above, which are also image/* mimes
+	{ mime = "image/*", use = "image" },
+
 	# { mime = "application/json", use = "edit" },
 	{ url = "*.json", use = "edit" },
 
-	# Multiple openers for a single rule
-	{ url = "*.html", use = [ "open", "edit" ] },
+	# Fallback, mirroring the default config. Without it anything unmatched
+	# above has no opener at all.
+	{ url = "*", use = "open" },
 ]
