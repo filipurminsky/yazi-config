@@ -1,0 +1,11 @@
+# ~/.config/yazi/vfs.toml
+# Remote filesystems, browsable in Yazi as `sftp://<name>`.
+
+# GoHealth UAT data-ingest drop box. Upload target is /incoming.
+#   yazi sftp://gohealth-uat
+[services.gohealth-uat]
+type     = "sftp"
+host     = "data-ingest-uat.gohealth.com"
+user     = "external-partner-test"
+port     = 22
+key_file = "~/.ssh/id_ed25519"
