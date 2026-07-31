@@ -24,6 +24,10 @@ show_hidden = false
     { url = "*.docx", run = "office" },
   ]
   prepend_previewers = [
+	# Piper is Yazi's maintained command-preview plugin. Render Markdown with
+	# Glow before the generic text previewer; $w and $t match Yazi's pane width
+	# and terminal light/dark mode.
+	{ url = "*.{md,mdx,markdown,mdown,mkd,mkdn}", run = 'piper -- CLICOLOR_FORCE=1 glow --width "$w" --style "$t" "$1"' },
     # Replace magick, image, video with mediainfo
     { mime = "{audio,video,image}/*", run = "mediainfo"},
     { mime = "application/subrip", run = "mediainfo" },

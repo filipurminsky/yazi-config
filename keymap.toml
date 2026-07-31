@@ -18,7 +18,7 @@ run = "leave"
 desc = "Go back to the parent directory"
 
 prepend_keymap = [
-    # glow.yazi  ctrl+e , ctrl+y
+	# Scroll the preview pane (including Piper/Glow Markdown previews).
     { on = ["<C-e>"], run = "seek 5" },
     { on = ["<C-y>"], run = "seek -5" },
 ]
