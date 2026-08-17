@@ -5,6 +5,12 @@ require("zoxide"):setup({
 	update_db = true,
 })
 
+-- Share yanked files between concurrently running Yazi instances (for example,
+-- a tmux popup and a regular terminal instance).
+require("session"):setup({
+	sync_yanked = true,
+})
+
 -- git.yazi: show git status as linemode in the file list
 require("git"):setup {
 	order = 1500,
