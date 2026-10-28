@@ -3,8 +3,7 @@
 
 # GoHealth UAT data-ingest drop box. Upload target is /incoming.
 #   yazi sftp://gohealth-uat
-[services.gohealth-uat]
-type     = "sftp"
+[sftp.gohealth-uat]
 host     = "data-ingest-uat.gohealth.com"
 user     = "external-partner-test"
 port     = 22

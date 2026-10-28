@@ -63,27 +63,27 @@ tbl_col = { fg = "blue" }
 # Or, use rules to rewrite the entire default rules:
 [opener]
 edit = [
-  { run = 'nvim "$@"', block = true },
+  { run = 'nvim %s', block = true },
 ]
 
 play = [
-  { run = 'open -a VLC "$@"', orphan = true, for = "macos" },
+  { run = 'open -a VLC %s', orphan = true, for = "macos" },
 ]
 
 # zathura-open detaches and focuses the window; orphan keeps it alive when yazi
 # exits. See ~/.local/bin/zathura-open for why it isn't plain `open -a`.
 document = [
-  { run = 'zathura-open "$@"', orphan = true, for = "macos" },
+  { run = 'zathura-open %s', orphan = true, for = "macos" },
 ]
 
 image = [
-  { run = 'open -a Preview "$@"', orphan = true, for = "macos" },
+  { run = 'open -a Preview %s', orphan = true, for = "macos" },
 ]
 
 # Hand off to the system default app. Replaces the `open` opener that the
 # default config provides, which defining [opener] here overrides away.
 open = [
-  { run = 'open "$@"', desc = "Open", orphan = true, for = "macos" },
+  { run = 'open %s', desc = "Open", orphan = true, for = "macos" },
 ]
 
 [open]
