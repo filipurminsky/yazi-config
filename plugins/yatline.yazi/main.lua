@@ -625,8 +625,15 @@ function Yatline.string.get:hovered_file_extension(show_icon)
 		end
 
 		if show_icon then
-			local icon = hovered:icon().text
-			return icon .. " " .. name
+			-- File:icon() is deprecated in favour of th.icon:match(file); keep the
+			-- old call only as a fallback for Yazi versions without th.icon.
+			local icon
+			if th.icon then
+				icon = th.icon:match(hovered)
+			else
+				icon = hovered:icon()
+			end
+			return (icon and icon.text or "") .. " " .. name
 		else
 			return name
 		end
