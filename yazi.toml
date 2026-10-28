@@ -25,9 +25,11 @@ show_hidden = false
   ]
   prepend_previewers = [
 	# Piper is Yazi's maintained command-preview plugin. Render Markdown with
-	# Glow before the generic text previewer; $w and $t match Yazi's pane width
-	# and terminal light/dark mode.
-	{ url = "*.{md,mdx,markdown,mdown,mkd,mkdn}", run = 'piper -- CLICOLOR_FORCE=1 glow --width "$w" --style "$t" "$1"' },
+	# Glow before the generic text previewer; $w matches Yazi's pane width.
+	# Style is pinned to dark rather than piper's $t: Yazi's light/dark probe
+	# can report "light" on this dark setup, and Glow's light style is
+	# near-black text that vanishes on the Catppuccin Mocha background.
+	{ url = "*.{md,mdx,markdown,mdown,mkd,mkdn}", run = 'piper -- CLICOLOR_FORCE=1 glow --width "$w" --style dark "$1"' },
     # Replace magick, image, video with mediainfo
     { mime = "{audio,video,image}/*", run = "mediainfo"},
     { mime = "application/subrip", run = "mediainfo" },
