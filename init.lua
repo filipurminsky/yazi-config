@@ -46,7 +46,7 @@ require("full-border"):setup {
 -- require("full-border"):setup()
 
 require("smart-enter"):setup {
-	open_multi = true,
+	open_multi = false,
 }
 
 -- yamb: bookmark manager -- https://github.com/h-hg/yamb
