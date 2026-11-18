@@ -43,6 +43,10 @@ require("full-border"):setup {
 
 -- require("full-border"):setup()
 
+-- relative-motions.yazi: vim counts (5j, 3yy, 2gt). Relative numbers in the
+-- file list. show_motion is off: it overrides Status, which yatline replaces.
+require("relative-motions"):setup({ show_numbers = "relative", show_motion = false, enter_mode = "first" })
+
 require("smart-enter"):setup {
 	open_multi = false,
 }

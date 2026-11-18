@@ -41,6 +41,8 @@ show_hidden = false
     { mime = "application/ms-*", run = "office" },
     { mime = "application/msword", run = "office" },
     { url = "*.docx", run = "office" },
+    # Archives: list contents with ouch.yazi (needs the `ouch` CLI). J/K scroll.
+    { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch" },
   ]
   # There are more extensions which are supported by mediainfo.
   # Just add file's MIME type to `previewers`, `preloaders` above.
